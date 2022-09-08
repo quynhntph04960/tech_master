@@ -14,11 +14,7 @@ class _GVPageState extends State<GVPage> {
   @override
   initState() {
     super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    listData.clear();
+    // listData.clear();
     for (int k = 1; k <= size; k++) {
       for (int i = 0; i < size; i++) {
         if (k % 2 != 0) {
@@ -40,7 +36,10 @@ class _GVPageState extends State<GVPage> {
         }
       }
     }
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -57,7 +56,7 @@ class _GVPageState extends State<GVPage> {
                   return InkWell(
                     onTap: () {
                       print(
-                          "${data.id.toString()}\ncol:${data.col ?? ""}\nro:${data.ro ?? ""}");
+                          "Name:${data.id.toString()} Col:${data.col ?? ""} Ro:${data.ro ?? ""}");
                     },
                     child: Container(
                       color: data.isColorWhite != true
@@ -65,7 +64,7 @@ class _GVPageState extends State<GVPage> {
                           : Colors.white,
                       alignment: Alignment.center,
                       child: Text(
-                        "${data.id.toString()}",
+                        data.id.toString(),
                         style: const TextStyle(color: Colors.red, fontSize: 9),
                       ),
                     ),
