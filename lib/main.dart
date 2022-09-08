@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'buoi4/bai2.dart';
+import 'buoi6.dart';
 
 void main() {
+  // mainBTVNBuoi2();
+  // mainBTVNBuoi3();
   runApp(const MyApp());
 }
 
@@ -14,10 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      home: const GVPage(),
     );
   }
 }
