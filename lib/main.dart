@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'buoi4/bai2.dart';
+import 'game/page/cards_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,10 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      home: const CardsPage(),
     );
   }
 }
