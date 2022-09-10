@@ -85,8 +85,6 @@ class _CardsPageState extends State<CardsPage> {
       selectedItem = "";
       setState(() {});
 
-
-
       await Future.delayed(
         const Duration(seconds: 1),
         () {
