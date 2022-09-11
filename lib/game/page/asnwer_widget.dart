@@ -11,7 +11,7 @@ class AnswerWidget extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: Image.asset(
-        "assets/${data.photo}",
+        "assets/images/${data.photo}",
         // "assets/chicken1.jpeg",
         fit: BoxFit.cover,
         width: 100,

@@ -7,7 +7,7 @@ class QuestionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.blue.withOpacity(0.5),
+        color: Colors.grey.withOpacity(0.5),
         borderRadius: BorderRadius.circular(8),
       ),
       alignment: Alignment.center,
