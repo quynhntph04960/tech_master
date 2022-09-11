@@ -34,33 +34,45 @@ class _CardsPageState extends State<CardsPage> {
             icon: const Icon(Icons.refresh))
       ]),
       // backgroundColor: Colors.black.withOpacity(0.8),
-      body: SafeArea(
-        child: GridView.builder(
-          itemCount: items.length,
-          physics: const NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.all(16),
-          shrinkWrap: true,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 16,
-            childAspectRatio: 1,
-            crossAxisSpacing: 16,
+      body: Container(
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/bg/bg_pokemon_one.jpg"),
+            fit: BoxFit.fill,
           ),
-          itemBuilder: (context, index) {
-            Item data = items[index];
-            return data.isFlip == true
-                ? AnswerWidget(data: data)
-                : GestureDetector(
-                    onTap: () => onClickQuestion(data),
-                    child: const QuestionWidget(),
-                  );
-          },
+        ),
+        child: Center(
+          child: GridView.builder(
+            itemCount: items.length,
+            physics: const NeverScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(16),
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 16,
+              childAspectRatio: 1,
+              crossAxisSpacing: 16,
+            ),
+            itemBuilder: (context, index) {
+              Item data = items[index];
+              return data.isFlip == true
+                  ? AnswerWidget(data: data)
+                  : GestureDetector(
+                      onTap: () => onClickQuestion(data),
+                      child: const QuestionWidget(),
+                    );
+            },
+          ),
         ),
       ),
     );
   }
 
-  void onClickQuestion(Item data) {
+  bool isClick = false;
+
+  void onClickQuestion(Item data) async {
+    if (isClick == true) return;
     final count = items.where(
         (element) => element.isFlip == false && selectedItem == element.code);
 
@@ -68,14 +80,16 @@ class _CardsPageState extends State<CardsPage> {
 
     if (count.isEmpty || selectedItem == data.code) {
       selectedItem = data.code;
+      isClick = false;
       setState(() {});
     } else {
       selectedItem = "";
       setState(() {});
-
-      Future.delayed(
+      isClick = true;
+      await Future.delayed(
         const Duration(seconds: 1),
         () {
+          isClick = false;
           _refreshList();
         },
       );
