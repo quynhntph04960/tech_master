@@ -76,6 +76,16 @@
           <value>
             <list>
               <option value="D:/src/flutter/packages/flutter_test/lib" />
+<<<<<<< HEAD
+=======
+            </list>
+          </value>
+        </entry>
+        <entry key="intl">
+          <value>
+            <list>
+              <option value="D:/src/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/lib" />
+>>>>>>> game
             </list>
           </value>
         </entry>
@@ -182,6 +192,10 @@
       <root url="file://D:/src/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.5/lib" />
       <root url="file://D:/src/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.3.0/lib" />
       <root url="file://D:/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_lints-2.0.1/lib" />
+<<<<<<< HEAD
+=======
+      <root url="file://D:/src/flutter/.pub-cache/hosted/pub.dartlang.org/intl-0.17.0/lib" />
+>>>>>>> game
       <root url="file://D:/src/flutter/.pub-cache/hosted/pub.dartlang.org/lints-2.0.0/lib" />
       <root url="file://D:/src/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.11/lib" />
       <root url="file://D:/src/flutter/.pub-cache/hosted/pub.dartlang.org/material_color_utilities-0.1.4/lib" />
