@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'game/page/cards_page.dart';
+import 'test_page.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+final keyMaterial = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -20,7 +22,9 @@ class MyApp extends StatelessWidget {
       // themeMode: ThemeMode.dark,
       // darkTheme: ThemeData.dark(),
       // home: const HomePage(),
-      home: const CardsPage(),
+      // home: const CardsPage(),
+      navigatorKey: keyMaterial,
+      home: const TestPage(page: 0),
     );
   }
 }
