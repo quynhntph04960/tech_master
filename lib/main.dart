@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 
-<<<<<<< HEAD
-import 'buoi6.dart';
-=======
-import 'test_page.dart';
->>>>>>> game
+import 'btvn/bai9/note_page.dart';
 
 void main() {
-  // mainBTVNBuoi2();
-  // mainBTVNBuoi3();
   runApp(const MyApp());
 }
 
@@ -21,12 +15,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-<<<<<<< HEAD
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const GVPage(),
-=======
       debugShowCheckedModeBanner: false,
       // theme: ThemeData(
       //   primarySwatch: Colors.lightBlue,
@@ -36,8 +24,8 @@ class MyApp extends StatelessWidget {
       // home: const HomePage(),
       // home: const CardsPage(),
       navigatorKey: keyMaterial,
-      home: const TestPage(page: 0),
->>>>>>> game
+      home: const NotePage(title: "Bloc"),
+      // home: const TestPage(page: 0),
     );
   }
 }
