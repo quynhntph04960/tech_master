@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'test_page.dart';
+import 'btvn/bai9/note_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
       // home: const HomePage(),
       // home: const CardsPage(),
       navigatorKey: keyMaterial,
-      home: const TestPage(page: 0),
+      home: const NotePage(title: "Bloc"),
+      // home: const TestPage(page: 0),
     );
   }
 }
