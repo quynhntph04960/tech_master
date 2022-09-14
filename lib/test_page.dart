@@ -25,8 +25,8 @@ class TestPage extends StatelessWidget {
                       page: number,
                     ));
               },
-              child: Text("Test Page")),
-          SizedBox(
+              child: const Text("Test Page")),
+          const SizedBox(
             height: 16,
             width: double.infinity,
           ),
@@ -38,7 +38,7 @@ class TestPage extends StatelessWidget {
                   print("Trang đầu tiên không back lại dc nữa!!!!!!");
                 }
               },
-              child: Text("Back Page")),
+              child: const Text("Back Page")),
         ],
       ),
     );

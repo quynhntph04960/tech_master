@@ -23,11 +23,8 @@ class NoteCubit extends Cubit<NoteState> {
   }
 
   void removeNote() {
-    for (var element in listNote) {
-      if (element.isCheck == true) {
-        listNote.remove(element);
-      }
-    }
+    listNote.removeWhere((element) => element.isCheck == true);
+
     // emit(NoteState()) để truyền dữ liệu cho class,
     // và kiểu dữ liệu truyền đi là NoteState()
     emit(NoteState());
