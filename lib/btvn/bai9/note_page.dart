@@ -14,8 +14,7 @@ class NotePage extends StatefulWidget {
 class _NotePageState extends State<NotePage> {
   final _controller = TextEditingController();
   final _noteCubit = NoteCubit();
-  int number = 0;
-  int runBlocListener = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,8 +23,6 @@ class _NotePageState extends State<NotePage> {
         actions: [
           IconButton(
             onPressed: () {
-              number++;
-              _controller.text = number.toString();
               if (_controller.text.isEmpty) {
                 print('Chưa nhập text');
                 return;
@@ -40,9 +37,7 @@ class _NotePageState extends State<NotePage> {
             icon: const Icon(Icons.add),
           ),
           IconButton(
-            onPressed: () {
-              _noteCubit.removeNote();
-            },
+            onPressed: () => _noteCubit.removeNote(),
             icon: const Icon(Icons.delete_forever),
           ),
         ],
@@ -57,24 +52,9 @@ class _NotePageState extends State<NotePage> {
             const SizedBox(
               height: 16,
             ),
-            BlocListener<NoteCubit, NoteState>(
-              bloc: _noteCubit,
-              listener: (context, state) {
-                runBlocListener++;
-                print("BlocListener chạy lần $runBlocListener");
-              },
-              child: const SizedBox(),
-            ),
             Expanded(
               child: BlocBuilder<NoteCubit, NoteState>(
                 bloc: _noteCubit,
-                buildWhen: (context, state) {
-                  if (_noteCubit.listNote.length > 5) {
-                    print(_noteCubit.listNote.length);
-                    return false;
-                  }
-                  return true;
-                },
                 builder: (context, state) {
                   return ListView.builder(
                     itemCount: _noteCubit.listNote.length,
