@@ -31,7 +31,7 @@ class ListviewWidget<T> extends StatelessWidget {
       itemBuilder: (context, index) {
         T data = listData[index];
         return GestureDetector(
-          onTap: () => onTap != null ? onTap! : null,
+          onTap: () => onTap != null ? onTap!(data, index) : null,
           child: itemBuilder(data, index),
         );
       },

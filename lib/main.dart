@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'mua_hang/page/home/home_page.dart';
+import 'btvn/buoi5.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +28,8 @@ class MyApp extends StatelessWidget {
       // home: const CardsPage(),
       navigatorKey: keyMaterial,
       // home: const NotePage(title: "Bloc"),
-      home: const HomePage(),
+      home: const NotificationPage(),
+      // home: const HomePage(),
       // home: const TestPage(page: 0),
     );
   }
