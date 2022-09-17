@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'btvn/bai9/note_page.dart';
+import 'mua_hang/page/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.red,
+      // ),
       debugShowCheckedModeBanner: false,
       // theme: ThemeData(
       //   primarySwatch: Colors.lightBlue,
@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
       // home: const HomePage(),
       // home: const CardsPage(),
       navigatorKey: keyMaterial,
-      home: const NotePage(title: "Bloc"),
+      // home: const NotePage(title: "Bloc"),
+      home: const HomePage(),
       // home: const TestPage(page: 0),
     );
   }
