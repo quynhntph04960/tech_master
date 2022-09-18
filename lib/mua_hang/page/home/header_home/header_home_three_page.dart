@@ -23,9 +23,8 @@ class _HeaderHomeThreeState extends State<HeaderHomeThree> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color:Theme.of(context).appBarTheme.backgroundColor
-      ),
+      decoration:
+          BoxDecoration(color: Theme.of(context).appBarTheme.backgroundColor),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
       height: 180,
       alignment: Alignment.center,
@@ -38,6 +37,7 @@ class _HeaderHomeThreeState extends State<HeaderHomeThree> {
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
+              padding: const EdgeInsets.only(top: 8),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 16,
@@ -49,7 +49,7 @@ class _HeaderHomeThreeState extends State<HeaderHomeThree> {
                   builder: (context, contain) {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(8),
