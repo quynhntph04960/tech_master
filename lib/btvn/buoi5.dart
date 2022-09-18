@@ -25,13 +25,26 @@ class _NotificationPageState extends State<NotificationPage> {
   int position = 0;
 
   @override
+  initState() {
+    super.initState();
+    for (int i = 0; i < 10; i++) {
+      listNotification.add(NotificationModel(
+          content: "content$i",
+          image: "image$i",
+          name: "name$i",
+          time: "time$i",
+          title: "title$i"));
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
       body: Column(
         children: [
           _buildHeader(),
-          _buildListBody(),
+          Expanded(child: _buildListBody()),
         ],
       ),
     );
@@ -40,35 +53,72 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget _buildListBody() {
     return ListviewWidget<NotificationModel>(
       listData: listNotification,
-      // onTap: (data, int index) {
-      //   position = index;
-      //   setState(() {});
-      // },
       itemBuilder: (data, int index) {
         return Container(
+          padding: const EdgeInsets.only(right: 16, bottom: 8, top: 8),
           margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.grey, width: 1),
+            border: Border.all(
+              color: Colors.grey,
+              width: 1,
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Icon(Icons.phone_android),
-                  Text(data.title ?? ""),
-                  Container(
-                    width: 10,
-                    height: 10,
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(50),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: Row(
+                  children: [
+                    const Icon(Icons.phone_android),
+                    const SizedBox(
+                      width: 8,
                     ),
-                  ),
-                  Text("${data.time}"),
-                ],
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Text(data.title ?? ""),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Container(
+                            width: 10,
+                            height: 10,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Text("${data.time}"),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    const Icon(Icons.abc)
+                  ],
+                ),
+              ),
+              const Divider(),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text("${data.name}"),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    Text("${data.content}"),
+                  ],
+                ),
               )
             ],
           ),
