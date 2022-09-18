@@ -35,10 +35,11 @@ class _FooterHomePageState extends State<FooterHomePage> {
                   crossAxisCount: 2,
                   listData: _footerHomeCubit.listProduct,
                   physics: const NeverScrollableScrollPhysics(),
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
                   mainAxisExtent: 290,
-                  padding: const EdgeInsets.all(16),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                   itemBuilder: (data, int index) {
                     return _buildProductItem(data);
                   },
