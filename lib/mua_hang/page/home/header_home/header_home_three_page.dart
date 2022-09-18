@@ -23,6 +23,9 @@ class _HeaderHomeThreeState extends State<HeaderHomeThree> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color:Theme.of(context).appBarTheme.backgroundColor
+      ),
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
       height: 180,
       alignment: Alignment.center,

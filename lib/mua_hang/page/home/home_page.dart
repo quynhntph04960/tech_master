@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'body_home/body_home_page.dart';
+import 'footer_home/footer_home_page.dart';
 import 'header_home/header_home_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,6 +14,8 @@ class HomePage extends StatelessWidget {
         shrinkWrap: true,
         children: const [
           HeaderHomePage(),
+          BodyHomePage(),
+          FooterHomePage(),
         ],
       ),
     );

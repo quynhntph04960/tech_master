@@ -69,8 +69,8 @@ class _HeaderHomeOnePageState extends State<HeaderHomeOnePage> {
                         margin: EdgeInsets.symmetric(horizontal: marginItem),
                         decoration: BoxDecoration(
                           color: _heardHomeCubit.positionPageView == index
-                              ? Colors.red
-                              : Colors.blue,
+                              ? Colors.blue
+                              : Colors.grey.shade500,
                           borderRadius: BorderRadius.circular(50),
                         ),
                         height: heightItem,

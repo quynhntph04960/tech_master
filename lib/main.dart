@@ -15,22 +15,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      // theme: ThemeData(
-      //   primarySwatch: Colors.red,
-      // ),
       debugShowCheckedModeBanner: false,
-      // theme: ThemeData(
-      //   primarySwatch: Colors.lightBlue,
-      // ),
+      theme: ThemeData(
+        backgroundColor: Colors.white,
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      darkTheme: ThemeData(
+        backgroundColor: Colors.black,
+        scaffoldBackgroundColor: Colors.black,
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.grey.withOpacity(0.4),
+        ),
+      ),
       // themeMode: ThemeMode.dark,
-      // darkTheme: ThemeData.dark(),
-      // home: const HomePage(),
-      // home: const CardsPage(),
       navigatorKey: keyMaterial,
-      // home: const NotePage(title: "Bloc"),
       home: const HomePage(),
-      // home: const HomePage(),
-      // home: const TestPage(page: 0),
     );
   }
 }
