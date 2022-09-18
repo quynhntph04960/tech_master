@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'btvn/buoi10/list_food_page.dart';
+import 'mua_hang/page/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       // home: const CardsPage(),
       navigatorKey: keyMaterial,
       // home: const NotePage(title: "Bloc"),
-      home: const ListFoodPage(),
+      home: const HomePage(),
       // home: const HomePage(),
       // home: const TestPage(page: 0),
     );
