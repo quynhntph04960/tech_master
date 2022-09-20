@@ -37,7 +37,7 @@ class _FooterHomePageState extends State<FooterHomePage> {
                   physics: const NeverScrollableScrollPhysics(),
                   crossAxisSpacing: 8,
                   mainAxisSpacing: 8,
-                  mainAxisExtent: 290,
+                  mainAxisExtent: 280,
                   padding:
                       const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                   itemBuilder: (data, int index) {
@@ -91,22 +91,17 @@ class _FooterHomePageState extends State<FooterHomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8),
-                        child: Text(
-                          // data.id! % 3 != 0
-                          //     ? data.name ?? ""
-                          //     : data.image ?? "",
-                          data.name ?? "",
-                          // style: TextStyle(overflow: TextOverflow.ellipsis),
-                          maxLines: 2,
-                        ),
+                      child: Text(
+                        data.id! % 3 != 0 ? data.name ?? "" : data.image ?? "",
+                        // data.name ?? "",
+                        // style: TextStyle(overflow: TextOverflow.ellipsis),
+                        maxLines: 2,
                       ),
                     ),
                     Container(
                       color: Colors.orange,
                       padding: const EdgeInsets.symmetric(
-                          vertical: 4, horizontal: 8),
+                          vertical: 6, horizontal: 12),
                       margin: const EdgeInsets.only(bottom: 8),
                       child: Text(
                         "${data.offer}% Giảm",
