@@ -48,7 +48,7 @@ class _FooterHomePageState extends State<FooterHomePage> {
           GestureDetector(
             onTap: _footerHomeCubit.addProduct,
             child: const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16),
+              padding: EdgeInsets.only(bottom: 16),
               child: Text(
                 "Xem thêm",
                 style: TextStyle(
