@@ -22,60 +22,109 @@ class _ListFoodState extends State<ListFoodPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Danh mục"),
-        actions: [
-          IconButton(
-            onPressed: () => _listFoodCubit.nextPage(context),
-            icon: const Icon(Icons.local_grocery_store, color: Colors.white),
-          )
-        ],
-      ),
-      body: BlocBuilder<ListFoodCubit, ListFoodState>(
-        bloc: _listFoodCubit,
-        builder: (context, state) {
-          return ListviewWidget<FoodModel>(
-            listData: _listFoodCubit.listFood,
-            itemBuilder: (data, int index) {
-              return Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: Row(
-                  children: [
-                    Container(
-                      height: 40,
-                      width: 40,
-                      color: data.color,
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          data.name ?? "",
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () => _listFoodCubit.updateListFood(index),
-                      child: Visibility(
-                        visible: data.isCheck == true,
-                        replacement: const Text(
-                          "Thêm",
-                        ),
-                        child: const Icon(
-                          Icons.check,
-                          color: Colors.green,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              );
-            },
-          );
-        },
+    print('On build Run');
+    return BlocProvider<ListFoodCubit>(
+      create: (context) => _listFoodCubit,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Danh mục"),
+          actions: [
+            IconButton(
+              onPressed: () => _listFoodCubit.nextPage(context),
+              icon: const Icon(Icons.local_grocery_store, color: Colors.white),
+            )
+          ],
+        ),
+        body: BlocBuilder<ListFoodCubit, ListFoodState>(
+          // bloc: _listFoodCubit,
+          builder: (context, state) {
+            print('On List Run');
+            return ListviewWidget<FoodModel>(
+              listData: _listFoodCubit.listFood,
+              itemBuilder: (data, int index) {
+                return ItemFoodWidget(
+                  data: data,
+                  index: index,
+                );
+              },
+            );
+          },
+        ),
       ),
     );
+  }
+}
+
+class ItemFoodWidget extends StatefulWidget {
+  final FoodModel data;
+  final int index;
+
+  const ItemFoodWidget({Key? key, required this.index, required this.data})
+      : super(key: key);
+
+  @override
+  State<ItemFoodWidget> createState() => _ItemFoodWidgetState();
+}
+
+class _ItemFoodWidgetState extends State<ItemFoodWidget> {
+  bool isFirst = true;
+  ListFoodCubit? listFoodCubit;
+
+  @override
+  Widget build(BuildContext context) {
+    if (isFirst == true) {
+      isFirst = false;
+      listFoodCubit = BlocProvider.of<ListFoodCubit>(context);
+    }
+    return BlocBuilder<ListFoodCubit, ListFoodState>(
+        // bloc: widget.listFoodCubit,
+        buildWhen: (context, state) {
+      if (widget.data.id != listFoodCubit?.listFood[widget.index].id) {
+        print("buildWhen ${listFoodCubit?.listFood[widget.index].name}");
+        return false;
+      }
+      print("TRUEEEEE");
+      return true;
+    }, builder: (context, state) {
+      print('On Item Run ${widget.data.name}');
+      return Container(
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        child: Row(
+          children: [
+            Container(
+              height: 40,
+              width: 40,
+              color: widget.data.color,
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  widget.data.name ?? "",
+                ),
+              ),
+            ),
+            // BlocBuilder<ListFoodCubit, ListFoodState>(
+            //     bloc: _listFoodCubit,
+            //     builder: (context, state) {
+            //       print('On Item Run');
+            GestureDetector(
+              onTap: () => listFoodCubit?.updateListFood(widget.index),
+              child: Visibility(
+                visible: widget.data.isCheck == true,
+                replacement: const Text(
+                  "Thêm",
+                ),
+                child: const Icon(
+                  Icons.check,
+                  color: Colors.green,
+                ),
+              ),
+            ),
+            // })
+          ],
+        ),
+      );
+    });
   }
 }

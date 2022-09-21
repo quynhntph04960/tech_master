@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'mua_hang/page/home/home_page.dart';
+import 'btvn/buoi10/list_food_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
-      home: const HomePage(),
+      home: const ListFoodPage(),
     );
   }
 }

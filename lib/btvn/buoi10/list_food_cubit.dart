@@ -42,7 +42,7 @@ class ListFoodCubit extends Cubit<ListFoodState> {
 
   void updateListFood(int index) {
     listFood[index].isCheck = !listFood[index].isCheck;
-    emit(ListFoodState());
+    emit(ListFoodItemState());
   }
 
   nextPage(BuildContext context) {
@@ -58,6 +58,8 @@ class ListFoodCubit extends Cubit<ListFoodState> {
 class ListFoodState {}
 
 class ListFoodInitState extends ListFoodState {}
+
+class ListFoodItemState extends ListFoodState {}
 
 class FoodModel {
   final int? id;
