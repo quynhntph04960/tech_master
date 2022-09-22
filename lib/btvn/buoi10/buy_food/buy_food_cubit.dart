@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../list_food_cubit.dart';
 
@@ -11,6 +12,18 @@ class BuyFoodCubit extends Cubit<BuyFoodState> {
     listBuyFood.addAll(listFood);
     sumMoneyFood();
     emit(BuyFoodState());
+
+    saveListFoodLocal();
+  }
+
+  saveListFoodLocal() async {
+    SharedPreferences pres = await SharedPreferences.getInstance();
+    List<String> listString = [];
+    for (var element in listBuyFood) {
+      String data = FoodModel().convertModelToString(element);
+      listString.add(data);
+    }
+    await pres.setStringList("ListFood", listString);
   }
 
   void sumMoneyFood() {
@@ -24,6 +37,8 @@ class BuyFoodCubit extends Cubit<BuyFoodState> {
     listBuyFood.removeAt(index);
     sumMoneyFood();
     emit(BuyFoodState());
+
+    saveListFoodLocal();
   }
 }
 

@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../base/navigator.dart';
 import 'buy_food/buy_food_page.dart';
@@ -9,8 +11,11 @@ import 'buy_food/buy_food_page.dart';
 class ListFoodCubit extends Cubit<ListFoodState> {
   ListFoodCubit() : super(ListFoodInitState());
   List<FoodModel> listFood = [];
+  List<FoodModel> listLocal = [];
 
-  void addListFood() {
+  void addListFood() async {
+    await getListFoodLocal();
+
     List<String> itemNames = [
       "Gà KFC",
       "Trà sữa",
@@ -37,7 +42,24 @@ class ListFoodCubit extends Cubit<ListFoodState> {
         ),
       );
     }
+
+    for (var dataFood in listFood) {
+      for (var dataLocal in listLocal) {
+        if (dataFood.id == dataLocal.id) dataFood.isCheck = true;
+      }
+    }
+
     emit(ListFoodState());
+  }
+
+  getListFoodLocal() async {
+    SharedPreferences? pres;
+    pres ??= await SharedPreferences.getInstance();
+    List<String>? listString = pres.getStringList("ListFood");
+    listString?.forEach((element) {
+      listLocal.add(FoodModel().convertStringToModel(element));
+    });
+    print(listLocal.length);
   }
 
   void updateListFood(int index) {
@@ -72,5 +94,22 @@ class FoodModel {
       {this.id, this.price, this.name, this.color, this.isCheck = false}) {
     color = Colors.primaries[Random().nextInt(Colors.primaries.length)];
     price = Random().nextInt(200);
+  }
+
+  String convertModelToString(FoodModel model) {
+    Map<String, dynamic> dataJson = {};
+    dataJson["id"] = model.id;
+    dataJson["name"] = model.name;
+    return jsonEncode(dataJson);
+  }
+
+  FoodModel convertStringToModel(String model) {
+    Map<String, dynamic> params = jsonDecode(model);
+    int id = params["id"];
+    String name = params["name"];
+    return FoodModel(
+      id: id,
+      name: name,
+    );
   }
 }
