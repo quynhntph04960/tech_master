@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../list_food_cubit.dart';
+import '../food_model.dart';
 
 class BuyFoodCubit extends Cubit<BuyFoodState> {
   BuyFoodCubit() : super(BuyFoodInitState());

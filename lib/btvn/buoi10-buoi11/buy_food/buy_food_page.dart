@@ -2,7 +2,7 @@ import 'package:btvn_techmaster/base/ui/listview_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../list_food_cubit.dart';
+import '../food_model.dart';
 import 'buy_food_cubit.dart';
 
 class BuyFoodPage extends StatefulWidget {

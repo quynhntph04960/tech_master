@@ -1,12 +1,10 @@
-import 'dart:convert';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../base/navigator.dart';
 import 'buy_food/buy_food_page.dart';
+import 'food_model.dart';
 
 class ListFoodCubit extends Cubit<ListFoodState> {
   ListFoodCubit() : super(ListFoodInitState());
@@ -64,7 +62,7 @@ class ListFoodCubit extends Cubit<ListFoodState> {
 
   void updateListFood(int index) {
     listFood[index].isCheck = !listFood[index].isCheck;
-    emit(ListFoodItemState());
+    // emit(ListFoodItemState());
   }
 
   nextPage(BuildContext context) {
@@ -82,34 +80,3 @@ class ListFoodState {}
 class ListFoodInitState extends ListFoodState {}
 
 class ListFoodItemState extends ListFoodState {}
-
-class FoodModel {
-  final int? id;
-  int? price;
-  final String? name;
-  Color? color;
-  bool isCheck;
-
-  FoodModel(
-      {this.id, this.price, this.name, this.color, this.isCheck = false}) {
-    color = Colors.primaries[Random().nextInt(Colors.primaries.length)];
-    price = Random().nextInt(200);
-  }
-
-  String convertModelToString(FoodModel model) {
-    Map<String, dynamic> dataJson = {};
-    dataJson["id"] = model.id;
-    dataJson["name"] = model.name;
-    return jsonEncode(dataJson);
-  }
-
-  FoodModel convertStringToModel(String model) {
-    Map<String, dynamic> params = jsonDecode(model);
-    int id = params["id"];
-    String name = params["name"];
-    return FoodModel(
-      id: id,
-      name: name,
-    );
-  }
-}
