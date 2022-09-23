@@ -38,27 +38,27 @@ class _HomePageState extends State<HomePage> {
                     FooterHomePage(),
                   ],
                 ),
-                Positioned(
-                  top: dX,
-                  left: 0,
-                  child: Draggable(
-                    onDraggableCanceled: (velocity, Offset offset) {
-                      print(velocity);
-                      print(offset);
-                      // print(MediaQuery.of(context).size.width);
-                      // print(MediaQuery.of(context).size.height);
-
-                      // dX = velocity.pixelsPerSecond.dx;
-                      // dY = velocity.pixelsPerSecond.dy;
-
-                      dX = offset.dx - 40;
-                      dY = offset.dy;
-                      setState(() {});
-                    },
-                    feedback: _boxWidget(),
-                    child: _boxWidget(),
-                  ),
-                )
+                // Positioned(
+                //   top: dX,
+                //   left: 0,
+                //   child: Draggable(
+                //     onDraggableCanceled: (velocity, Offset offset) {
+                //       print(velocity);
+                //       print(offset);
+                //       // print(MediaQuery.of(context).size.width);
+                //       // print(MediaQuery.of(context).size.height);
+                //
+                //       // dX = velocity.pixelsPerSecond.dx;
+                //       // dY = velocity.pixelsPerSecond.dy;
+                //
+                //       dX = offset.dx - 40;
+                //       dY = offset.dy;
+                //       setState(() {});
+                //     },
+                //     feedback: _boxWidget(),
+                //     child: _boxWidget(),
+                //   ),
+                // )
               ],
             ),
           );
