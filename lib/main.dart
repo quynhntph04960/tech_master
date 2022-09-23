@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'btvn/buoi10-buoi11/list_food_page.dart';
+import 'btvn/buoi12/mini_shop_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
-      home: const ListFoodPage(),
+      home: const MiniShopPage(),
     );
   }
 }
