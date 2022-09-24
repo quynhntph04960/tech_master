@@ -18,52 +18,51 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      extendBodyBehindAppBar: true,
-      body: SafeArea(
-        child: LayoutBuilder(builder: (context, sizeBox) {
-          return InkWell(
-            onTap: () {
-              print("---------------------------------");
-              print(sizeBox.maxHeight);
-              print(sizeBox.maxWidth);
-            },
-            child: Stack(
-              children: [
-                ListView(
-                  shrinkWrap: true,
-                  children: const [
-                    HeaderHomePage(),
-                    BodyHomePage(),
-                    FooterHomePage(),
-                  ],
-                ),
-                // Positioned(
-                //   top: dX,
-                //   left: 0,
-                //   child: Draggable(
-                //     onDraggableCanceled: (velocity, Offset offset) {
-                //       print(velocity);
-                //       print(offset);
-                //       // print(MediaQuery.of(context).size.width);
-                //       // print(MediaQuery.of(context).size.height);
-                //
-                //       // dX = velocity.pixelsPerSecond.dx;
-                //       // dY = velocity.pixelsPerSecond.dy;
-                //
-                //       dX = offset.dx - 40;
-                //       dY = offset.dy;
-                //       setState(() {});
-                //     },
-                //     feedback: _boxWidget(),
-                //     child: _boxWidget(),
-                //   ),
-                // )
-              ],
-            ),
-          );
-        }),
-      ),
+      // backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      // extendBodyBehindAppBar: true,
+      body: LayoutBuilder(builder: (context, sizeBox) {
+        return InkWell(
+          onTap: () {
+            print("---------------------------------");
+            print(sizeBox.maxHeight);
+            print(sizeBox.maxWidth);
+          },
+          child: Stack(
+            children: [
+              ListView(
+                padding: const EdgeInsets.all(0),
+                shrinkWrap: true,
+                children: const [
+                  HeaderHomePage(),
+                  BodyHomePage(),
+                  FooterHomePage(),
+                ],
+              ),
+              // Positioned(
+              //   top: dX,
+              //   left: 0,
+              //   child: Draggable(
+              //     onDraggableCanceled: (velocity, Offset offset) {
+              //       print(velocity);
+              //       print(offset);
+              //       // print(MediaQuery.of(context).size.width);
+              //       // print(MediaQuery.of(context).size.height);
+              //
+              //       // dX = velocity.pixelsPerSecond.dx;
+              //       // dY = velocity.pixelsPerSecond.dy;
+              //
+              //       dX = offset.dx - 40;
+              //       dY = offset.dy;
+              //       setState(() {});
+              //     },
+              //     feedback: _boxWidget(),
+              //     child: _boxWidget(),
+              //   ),
+              // )
+            ],
+          ),
+        );
+      }),
     );
   }
 
