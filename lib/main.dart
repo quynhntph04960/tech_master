@@ -1,5 +1,5 @@
 import 'package:btvn_techmaster/mua_hang/page/home/home_page.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/materialage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         backgroundColor: Colors.black,
         scaffoldBackgroundColor: Colors.black,
-        // appBarTheme: AppBarTheme(
-        //   backgroundColor: Colors.grey.withOpacity(0.4),
-        // ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.grey.withOpacity(0.4),
+        ),
       ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
