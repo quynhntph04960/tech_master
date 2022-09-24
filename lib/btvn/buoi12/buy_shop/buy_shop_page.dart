@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../buoi10-buoi11/food_model.dart';
-import 'buy_shop_cubit.dart';
+import 'buy_shop_provider.dart';
 
 class BuyShopPage extends StatefulWidget {
   final List<FoodModel> listFood;
