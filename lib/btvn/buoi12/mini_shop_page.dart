@@ -27,6 +27,12 @@ class _MiniShopPageState extends State<MiniShopPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mini Shop"),
+        actions: [
+          IconButton(
+            onPressed: () => _provider.nextPage(context),
+            icon: const Icon(Icons.local_grocery_store, color: Colors.white),
+          )
+        ],
       ),
       body: ChangeNotifierProvider.value(
         value: _provider.notifierProvider,

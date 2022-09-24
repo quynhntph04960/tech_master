@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../base/utils/common_function.dart';
 import '../buoi10-buoi11/food_model.dart';
+import 'buy_shop/buy_shop_page.dart';
 
 class MiniShopProvider {
   ShopNotifierProvider notifierProvider = ShopNotifierProvider();
@@ -45,6 +47,15 @@ class MiniShopProvider {
 
   void notifyListeners() {
     notifierProvider.notifyListeners();
+  }
+
+  nextPage(BuildContext context) {
+    final listNew = <FoodModel>[];
+    for (var element in listShop) {
+      if (element.isCheck == true) listNew.add(element);
+    }
+    if (listNew.isEmpty) return;
+    navigatorPush(context, BuyShopPage(listFood: listNew));
   }
 }
 

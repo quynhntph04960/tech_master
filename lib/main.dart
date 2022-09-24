@@ -1,5 +1,6 @@
-import 'package:btvn_techmaster/mua_hang/page/home/home_page.dart';
 import 'package:flutter/material.dart';
+
+import 'btvn/buoi12/mini_shop_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
-      home: const HomePage(),
+      home: const MiniShopPage(),
     );
   }
 }
