@@ -23,7 +23,15 @@ class _HeaderHomeOnePageState extends State<HeaderHomeOnePage> {
   @override
   void initState() {
     _heardHomeCubit.addListPageView();
+    _heardHomeCubit.callDurationAllTime();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    // _heardHomeCubit.isCheckLifeCycle = true;
+    super.dispose();
   }
 
   @override
@@ -45,6 +53,7 @@ class _HeaderHomeOnePageState extends State<HeaderHomeOnePage> {
                 height: 170,
                 child: PageView.builder(
                   itemCount: _heardHomeCubit.listData.length,
+                  controller: _heardHomeCubit.controller,
                   onPageChanged: _heardHomeCubit.onChangePosition,
                   itemBuilder: (context, index) {
                     return NetworkWidget(
