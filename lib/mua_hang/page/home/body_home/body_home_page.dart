@@ -7,6 +7,7 @@ class BodyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 0,
       child: ListviewWidget(
         listData: [],
         itemBuilder: (data, index) {
