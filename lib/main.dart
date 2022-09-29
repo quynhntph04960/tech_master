@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'demo/buttom_bar_page.dart';
+import 'btvn/buoi14/bottombar_page/bottom_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
-      home: const BottomBarPage(),
+      home: const BottomPage(),
     );
   }
 }
