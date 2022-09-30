@@ -1,7 +1,9 @@
+import 'package:btvn_techmaster/base/navigator.dart';
 import 'package:flutter/material.dart';
 
 import '../../base/ui/button_widget.dart';
 import '../../base/ui/field_widget.dart';
+import 'news_feed/news_feed_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -58,7 +60,9 @@ class _LoginPageState extends State<LoginPage> {
                     Expanded(
                         child: ButtonWidget(
                       width: double.infinity,
-                      onPressed: () {},
+                      onPressed: () {
+                        navigatorPush(context, const NewsFeedPage());
+                      },
                       text: "Đăng nhập",
                     )),
                   ],

@@ -9,7 +9,10 @@ class GridviewWidget<T> extends StatelessWidget {
   final Axis scrollDirection;
   final ScrollPhysics? physics;
   final int crossAxisCount;
-  final double? crossAxisSpacing, mainAxisSpacing, mainAxisExtent;
+  final double? crossAxisSpacing,
+      mainAxisSpacing,
+      mainAxisExtent,
+      childAspectRatio;
 
   const GridviewWidget({
     Key? key,
@@ -17,6 +20,7 @@ class GridviewWidget<T> extends StatelessWidget {
     required this.listData,
     required this.itemBuilder,
     this.physics,
+    this.childAspectRatio,
     this.onTap,
     this.padding,
     this.crossAxisSpacing,
@@ -40,6 +44,7 @@ class GridviewWidget<T> extends StatelessWidget {
         crossAxisSpacing: crossAxisSpacing ?? 0.0,
         mainAxisSpacing: mainAxisSpacing ?? 0.0,
         mainAxisExtent: mainAxisExtent,
+        childAspectRatio: childAspectRatio ?? 1.0,
       ),
       itemBuilder: (context, index) {
         T data = listData[index];
