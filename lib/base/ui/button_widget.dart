@@ -7,6 +7,7 @@ class ButtonWidget extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final AlignmentGeometry? alignment;
   final double? width, height;
+  final Color? colorBackGround, colorText;
 
   const ButtonWidget(
       {this.text,
@@ -16,6 +17,8 @@ class ButtonWidget extends StatelessWidget {
       this.width,
       this.height,
       this.alignment,
+      this.colorText,
+      this.colorBackGround,
       Key? key})
       : super(key: key);
 
@@ -31,16 +34,16 @@ class ButtonWidget extends StatelessWidget {
         height: height,
         alignment: alignment,
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color: colorBackGround ?? Colors.blue,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Text(
           text ?? "",
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontWeight: FontWeight.w400,
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
             fontSize: 16,
-            color: Colors.white,
+            color: colorText ?? Colors.white,
           ),
         ),
       ),

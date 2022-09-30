@@ -7,6 +7,7 @@ class FieldWidget extends StatefulWidget {
   final TextEditingController? controller;
   final String typeField;
   final String? hintText;
+  final String? labelText;
   final int? maxLines, maxLength;
   final Widget? suffixIcon, prefixIcon;
   final TextInputAction? textInputAction;
@@ -20,6 +21,7 @@ class FieldWidget extends StatefulWidget {
     this.maxLength,
     this.suffixIcon,
     this.prefixIcon,
+    this.labelText,
     this.textInputAction,
     this.validator,
     this.typeField = typeFieldDefault,
@@ -32,7 +34,7 @@ class FieldWidget extends StatefulWidget {
 class _FieldWidgetState extends State<FieldWidget> {
   TextEditingController? controller;
   String typeField = typeFieldPassword;
-  String? hintText;
+  String? hintText, labelText;
   int? maxLines, maxLength;
   Widget? suffixIcon, prefixIcon;
   TextInputAction? textInputAction;
@@ -46,6 +48,7 @@ class _FieldWidgetState extends State<FieldWidget> {
     typeField = widget.typeField;
     controller = widget.controller;
     hintText = widget.hintText;
+    labelText = widget.labelText;
     maxLines = widget.maxLines;
     maxLength = widget.maxLength;
     suffixIcon = widget.suffixIcon;
@@ -80,6 +83,10 @@ class _FieldWidgetState extends State<FieldWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final border = OutlineInputBorder(
+      borderSide: const BorderSide(color: Colors.grey),
+      borderRadius: BorderRadius.circular(8),
+    );
     return TextFormField(
       controller: controller,
       validator: validator,
@@ -87,8 +94,13 @@ class _FieldWidgetState extends State<FieldWidget> {
       decoration: InputDecoration(
         counterText: "",
         hintText: hintText,
+        labelText: labelText,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
+        border: border,
+        enabledBorder: border,
+        disabledBorder: border,
+        focusedBorder: border,
       ),
       textInputAction: textInputAction,
       maxLines: maxLines,

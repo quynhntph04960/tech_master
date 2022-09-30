@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'btvn/buoi14/bottombar_page/bottom_page.dart';
+import 'btvn/buoi15/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
-      home: const BottomPage(),
+      home: const LoginPage(),
     );
   }
 }
