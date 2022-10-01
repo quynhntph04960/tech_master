@@ -8,7 +8,7 @@ class FieldWidget extends StatefulWidget {
   final String typeField;
   final String? hintText;
   final String? labelText;
-  final int? maxLines, maxLength;
+  final int? maxLines, maxLength, minLines;
   final Widget? suffixIcon, prefixIcon;
   final TextInputAction? textInputAction;
   final FormFieldValidator<String>? validator;
@@ -20,6 +20,7 @@ class FieldWidget extends StatefulWidget {
     this.maxLines,
     this.maxLength,
     this.suffixIcon,
+    this.minLines,
     this.prefixIcon,
     this.labelText,
     this.textInputAction,
@@ -35,7 +36,7 @@ class _FieldWidgetState extends State<FieldWidget> {
   TextEditingController? controller;
   String typeField = typeFieldPassword;
   String? hintText, labelText;
-  int? maxLines, maxLength;
+  int? maxLines, maxLength, minLines;
   Widget? suffixIcon, prefixIcon;
   TextInputAction? textInputAction;
   FormFieldValidator<String>? validator;
@@ -50,6 +51,7 @@ class _FieldWidgetState extends State<FieldWidget> {
     hintText = widget.hintText;
     labelText = widget.labelText;
     maxLines = widget.maxLines;
+    minLines = widget.minLines;
     maxLength = widget.maxLength;
     suffixIcon = widget.suffixIcon;
     prefixIcon = widget.prefixIcon;
@@ -104,6 +106,7 @@ class _FieldWidgetState extends State<FieldWidget> {
       ),
       textInputAction: textInputAction,
       maxLines: maxLines,
+      minLines: minLines,
       maxLength: maxLength,
     );
   }

@@ -1,4 +1,7 @@
+import 'package:btvn_techmaster/base/utils/common_function.dart';
 import 'package:flutter/material.dart';
+
+import 'report_page.dart';
 
 class LeftMenuPage extends StatefulWidget {
   const LeftMenuPage({Key? key}) : super(key: key);
@@ -64,7 +67,13 @@ class _LeftMenuPageState extends State<LeftMenuPage> {
             const Divider(),
             _buildItem(text: "Sự cố", iconData: Icons.error_outline),
             const Divider(),
-            _buildItem(text: "Báo cáo", iconData: Icons.bug_report_rounded),
+            _buildItem(
+                text: "Báo cáo",
+                iconData: Icons.bug_report_rounded,
+                callback: () {
+                  Navigator.pop(context);
+                  navigatorPush(context, ReportPage());
+                }),
             const Divider(),
             _buildItem(text: "Đổi mật khẩu", iconData: Icons.password_sharp),
             const Divider(),
@@ -80,27 +89,35 @@ class _LeftMenuPageState extends State<LeftMenuPage> {
     );
   }
 
-  Widget _buildItem({String? text, IconData? iconData}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Icon(
-            iconData,
-            size: 28,
-            color: Colors.black,
-          ),
-          const SizedBox(
-            width: 16,
-          ),
-          Text(
-            text ?? "",
-            style: const TextStyle(
-                fontSize: 16, color: Colors.black, fontWeight: FontWeight.w400),
-          )
-        ],
+  Widget _buildItem(
+      {String? text, IconData? iconData, VoidCallback? callback}) {
+    return GestureDetector(
+      onTap: () {
+        if (callback != null) callback();
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Icon(
+              iconData,
+              size: 28,
+              color: Colors.black,
+            ),
+            const SizedBox(
+              width: 16,
+            ),
+            Text(
+              text ?? "",
+              style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400),
+            )
+          ],
+        ),
       ),
     );
   }

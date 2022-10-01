@@ -38,7 +38,7 @@ class _ListFoodState extends State<ListFoodPage> {
           ],
         ),
         body: BlocBuilder<ListFoodCubit, ListFoodState>(
-          // bloc: _listFoodCubit,
+          bloc: _listFoodCubit,
           builder: (context, state) {
             print('On List Run');
             return ListviewWidget<FoodModel>(
