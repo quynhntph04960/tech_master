@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'game/page/cards_page.dart';
+import 'demo/bai16/demo_bai16.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
-      home: const CardsPage(),
+      home: const DemoBai16(),
     );
   }
 }
