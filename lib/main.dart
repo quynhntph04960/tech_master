@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'btvn/buoi15/login_page.dart';
-import 'btvn/buoi15/profile_page.dart';
+import 'game/page/cards_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
-      home: const LoginPage(),
+      home: const CardsPage(),
     );
   }
 }

@@ -8,16 +8,19 @@ class AnswerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Image.asset(
-        "assets/images/${data.photo}",
-        // "assets/chicken1.jpeg",
-        fit: BoxFit.cover,
-        width: 100,
-        height: 100,
-        // width: double.infinity,
-        // height: double.infinity,
+    return Visibility(
+      visible: data.isEnable != true,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Image.asset(
+          "assets/images/${data.photo}",
+          // "assets/chicken1.jpeg",
+          fit: BoxFit.cover,
+          width: 100,
+          height: 100,
+          // width: double.infinity,
+          // height: double.infinity,
+        ),
       ),
     );
   }
