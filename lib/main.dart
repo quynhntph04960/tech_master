@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'demo/bai16/demo_bai16.dart';
+import 'btvn/buoi15/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
-      home: const DemoBai16(),
+      home: const LoginPage(),
     );
   }
 }
