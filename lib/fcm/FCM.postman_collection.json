@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "aeead2d1-c8f1-4501-9d29-a22bf02a679f",
+		"name": "FCM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15715470"
+	},
+	"item": [
+		{
+			"name": "Push notification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "key=AAAAjxEM1kk:APA91bG6lK0lAtAMFWdYXfALHItWEFq60Kh7tF1txQJxrszXWaP0ij-SwyplR8Ou0n7uKJd4ZXE3XLAOe6xNILqNVrojvbhLyadS6X1Px5KyvBVKcUs_xCUOyrz8X_eHs77wLyQVjZsI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"notification\": {\n        \"title\": \"Report Issues\",\n        \"body\": \"Testt\",\n        \"badge\": 1000\n    },\n    \"to\": \"f5lfIWi_Twm3VLNTRd3SDO:APA91bGc68xwwizh76VENV-6iFQxu8nHhMgP8J4-4v_8HsrPqY8pz7zJtyuxMG5k0uqocff7YCjeLfDwLKoAemLGW73xvESQB4JWSVT8Q7RKSQPLoP_QwkaPwowpQBjm8cRq4XoXBjju\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fcm.googleapis.com/fcm/send",
+					"protocol": "https",
+					"host": [
+						"fcm",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"fcm",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Push notification Silent",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "key=AAAAjea-jfo:APA91bGz06_1NHmWreAfAlultq4Qp0rn1P9UI8QbmsA8d1YFmByxlLA2ldhEOK4k_wto56in1qvMjdjiiV-4Cefp3RzhABpParpWya508kAlrG41B2AkSzuArNp4NsPB2RPDnaPVCWBM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"title\": \"Noibai.vn push silent\",\n        \"body\": \"Có một chuyến đi mới từ 98 Đường Minh Khai, Minh Khai, Hai Bà Trưng, Hà Nội, Việt Nam đi Sân bay nội bài\",\n        \"content_available\": \"true\"\n    },\n    \"to\": \"chQMA6wHQAKi5g_Fd39y28:APA91bFqzKiAiCRWSWgnd2aEpo4jRGqLC0XE5dnQPGELXlaSMF59MI273O9a6PxrJDL0GwUWMT8HBG80EVoJM4e4PyU6eteo1xXqwtVmuyX0AEqu1Id9EmP3O4JhlfZqajAuX1TjSE64\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fcm.googleapis.com/fcm/send",
+					"protocol": "https",
+					"host": [
+						"fcm",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"fcm",
+						"send"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

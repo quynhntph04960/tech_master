@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../base/ui/button_widget.dart';
 import '../../base/ui/field_widget.dart';
+import '../../main.dart';
 import 'model/user_response.dart';
 import 'news_feed/news_feed_page.dart';
 
@@ -19,8 +20,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneController =
+      TextEditingController(text: "0393923233");
+  TextEditingController passwordController =
+      TextEditingController(text: "123123");
   UserResponse? dataResponse;
 
   @override
@@ -149,6 +152,7 @@ class _LoginPageState extends State<LoginPage> {
       if (dataResponse?.code == 0) {
         SharedPreferences pres = await SharedPreferences.getInstance();
         pres.setString("token", dataResponse?.data?.token ?? "");
+        token = dataResponse?.data?.token ?? "";
         Future.delayed(Duration.zero, () {
           navigatorPushAndRemoveUntil(context, const NewsFeedPage());
         });

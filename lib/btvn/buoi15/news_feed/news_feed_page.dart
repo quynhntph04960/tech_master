@@ -1,4 +1,5 @@
 import 'package:btvn_techmaster/base/ui/listview_widget.dart';
+import 'package:btvn_techmaster/fcm/fcm_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../left_menu_page.dart';
@@ -12,6 +13,15 @@ class NewsFeedPage extends StatefulWidget {
 }
 
 class _NewsFeedPageState extends State<NewsFeedPage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    fcm.requestPermission();
+
+    super.initState();
+    // FCMManager().requestPermission();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

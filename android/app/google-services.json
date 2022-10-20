@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "52928687701",
+    "project_id": "tech-master-c4cbd",
+    "storage_bucket": "tech-master-c4cbd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52928687701:android:7b00ea56a7115e56e42edc",
+        "android_client_info": {
+          "package_name": "com.example.btvn_techmaster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52928687701-pc8sbpfbb30t2ui1gua1gvmlmd47h6qp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQulEPj_64ygkPv6sr1B0qltKO_c6LXWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52928687701-pc8sbpfbb30t2ui1gua1gvmlmd47h6qp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
