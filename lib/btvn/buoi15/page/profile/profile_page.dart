@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -89,11 +87,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   ButtonWidget(
                     alignment: Alignment.center,
                     onPressed: () => _cubit.updateUser(
-                        name: nameController.text,
-                        dateOfBirth: dateBirdController.text,
-                        address: addressController.text,
-                        email: emailController.text,
-                        gender: true),
+                      name: nameController.text,
+                      dateOfBirth: dateBirdController.text,
+                      address: addressController.text,
+                      email: emailController.text,
+                      gender: true,
+                      context: context,
+                    ),
                     text: "Lưu",
                   )
                 ],
@@ -114,8 +114,8 @@ class _ProfilePageState extends State<ProfilePage> {
             ClipRRect(
               borderRadius: BorderRadius.circular(150),
               child: state.avatar != null
-                  ? Image.file(
-                      File(state.avatar ?? ""),
+                  ? Image.network(
+                      state.avatar ?? "",
                       height: 100,
                       width: 100,
                       fit: BoxFit.cover,

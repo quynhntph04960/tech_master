@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../base/service/api_service.dart';
 import '../../model/user_response.dart';
-import '../picker_image.dart';
+import '../../picker_image/picker_image.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit() : super(ProfileState());
@@ -28,7 +28,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     CustomBottomSheetWidget(
       context: context,
       subWidget: PickerImagePage(callback: (file) {
-        emit(state.copyWith(avatar: file.path));
+        emit(state.copyWith(avatar: "${file.path}"));
       }),
     ).showBottomSheetDialog();
   }
@@ -39,22 +39,27 @@ class ProfileCubit extends Cubit<ProfileState> {
     required String address,
     required String dateOfBirth,
     required bool gender,
+    required BuildContext context,
   }) async {
     final param = {
       "Name": name,
       "Email": email,
       "Address": address,
       "DateOfBirth": dateOfBirth,
-      "Gender": gender,
+      "Gender": '$gender',
       "Avatar": state.avatar ?? state.dataUser?.avatar ?? "",
     };
-
     final response = await apiService.request(
-        path: "accounts/update", method: Method.post, body: param);
+      path: "accounts/update",
+      method: Method.post,
+      body: param,
+    );
     UserResponse dataResponse = UserResponse.fromJson(response);
+
     if (dataResponse.code == 0) {
-      emit(state.copyWith(
-          dataUser: dataResponse.data, avatar: dataResponse.data?.avatar));
+      Navigator.pop(context);
+      // emit(state.copyWith(
+      //     dataUser: dataResponse.data, avatar: dataResponse.data?.avatar));
     } else {
       print("${dataResponse.message} - ${dataResponse.code}");
     }

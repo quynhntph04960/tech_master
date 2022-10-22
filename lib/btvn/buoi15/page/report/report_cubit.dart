@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../base/service/api_service.dart';
 import '../../../../base/ui/custom_bottom_sheet.dart';
-import '../picker_image.dart';
+import '../../picker_image/picker_image.dart';
 
 class ReportCubit extends Cubit<ReportState> {
   ReportCubit() : super(ReportState()) {
@@ -28,7 +28,7 @@ class ReportCubit extends Cubit<ReportState> {
     CustomBottomSheetWidget(
       context: context,
       subWidget: PickerImagePage(callback: (file) {
-        state.listPhoto?.insert(0, file.path);
+        state.listPhoto?.insert(0, file.path ?? "");
         emit(state.copyWith(listPhoto: state.listPhoto));
       }),
     ).showBottomSheetDialog();

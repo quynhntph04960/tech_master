@@ -65,6 +65,7 @@ class APIService {
 
     if (response.statusCode >= 200 && response.statusCode < 300) {
       final json = jsonDecode(response.body);
+      print("response Api: ${json.toString()}");
 
       if (json['code'] == 0) {
         // map, dictionary, key:value

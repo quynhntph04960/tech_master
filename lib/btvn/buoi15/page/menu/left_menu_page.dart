@@ -54,6 +54,7 @@ class _LeftMenuPageState extends State<LeftMenuPage> {
                               state.avatar ?? "",
                               height: 48,
                               width: 48,
+                              fit: BoxFit.cover,
                               errorBuilder: (_, __, ___) {
                                 return Container(
                                   decoration: BoxDecoration(

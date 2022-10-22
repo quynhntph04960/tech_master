@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../base/ui/button_widget.dart';
+import '../model/upload_file_response.dart';
+import 'picker_image_cubit.dart';
 
 class PickerImagePage extends StatefulWidget {
-  final Function(XFile file) callback;
+  final Function(DataUploadFile file) callback;
   const PickerImagePage({Key? key, required this.callback}) : super(key: key);
 
   @override
@@ -12,7 +14,7 @@ class PickerImagePage extends StatefulWidget {
 }
 
 class _PickerImagePageState extends State<PickerImagePage> {
-  final picker = ImagePicker();
+  final _cubit = PickerImageCubit();
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +30,22 @@ class _PickerImagePageState extends State<PickerImagePage> {
             margin: const EdgeInsets.symmetric(vertical: 8),
             width: double.infinity,
             onPressed: () {
-              selectedImage(ImageSource.camera, context);
+              Navigator.pop(context);
+              _cubit.selectedImage(ImageSource.camera, context).then((value) {
+                if (value == null) return;
+                upload(value);
+              });
             },
             text: "Camera",
           ),
           ButtonWidget(
             margin: const EdgeInsets.symmetric(vertical: 8),
             onPressed: () {
-              selectedImage(ImageSource.gallery, context);
+              Navigator.pop(context);
+              _cubit.selectedImage(ImageSource.gallery, context).then((value) {
+                if (value == null) return;
+                upload(value);
+              });
             },
             width: double.infinity,
             text: "Galley",
@@ -45,37 +55,8 @@ class _PickerImagePageState extends State<PickerImagePage> {
     );
   }
 
-  Future<void> selectedImage(ImageSource source, BuildContext context) async {
-    Navigator.pop(context);
-    try {
-      final image = await picker.pickImage(
-        source: source,
-        imageQuality: 0,
-      );
-      if (image != null) {
-        upload(image);
-      }
-    } catch (e) {
-      getLostData();
-    }
-  }
-
-  Future<void> getLostData() async {
-    final LostDataResponse response = await picker.retrieveLostData();
-    if (response.isEmpty) {
-      return;
-    }
-    if (response.files != null) {
-      for (final XFile file in response.files ?? []) {
-        upload(file);
-      }
-    } else {
-      throw Exception("Cos looix xayr ra khoong theer laays dc hinhf anhr");
-    }
-  }
-
-  void upload(XFile file) {
+  void upload(DataUploadFile file) {
+    file.path = "http://api.quynhtao.com${file.path}";
     widget.callback(file);
-    Navigator.pop(context);
   }
 }
