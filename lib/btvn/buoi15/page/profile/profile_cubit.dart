@@ -2,15 +2,12 @@ import 'package:btvn_techmaster/base/ui/custom_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 
 import '../../../../base/service/api_service.dart';
-import '../../../../base/ui/button_widget.dart';
 import '../../model/user_response.dart';
+import '../picker_image.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  final picker = ImagePicker();
-
   ProfileCubit() : super(ProfileState());
 
   Future infoUser() async {
@@ -30,68 +27,10 @@ class ProfileCubit extends Cubit<ProfileState> {
   void pickerImage(BuildContext context) {
     CustomBottomSheetWidget(
       context: context,
-      subWidget: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(8)),
-        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-        child: Column(
-          children: [
-            ButtonWidget(
-              margin: const EdgeInsets.symmetric(vertical: 8),
-              width: double.infinity,
-              onPressed: () {
-                selectedImage(ImageSource.camera, context);
-              },
-              text: "Camera",
-            ),
-            ButtonWidget(
-              margin: const EdgeInsets.symmetric(vertical: 8),
-              onPressed: () {
-                selectedImage(ImageSource.gallery, context);
-              },
-              width: double.infinity,
-              text: "Galley",
-            ),
-          ],
-        ),
-      ),
+      subWidget: PickerImagePage(callback: (file) {
+        emit(state.copyWith(avatar: file.path));
+      }),
     ).showBottomSheetDialog();
-  }
-
-  Future<void> selectedImage(ImageSource source, BuildContext context) async {
-    Navigator.pop(context);
-    try {
-      final image = await picker.pickImage(
-        source: source,
-        imageQuality: 0,
-      );
-      if (image != null) {
-        upload(image);
-      }
-    } catch (e) {
-      getLostData();
-    }
-  }
-
-  Future<void> getLostData() async {
-    final LostDataResponse response = await picker.retrieveLostData();
-    if (response.isEmpty) {
-      return;
-    }
-    if (response.files != null) {
-      for (final XFile file in response.files ?? []) {
-        upload(file);
-      }
-    } else {
-      throw Exception("Cos looix xayr ra khoong theer laays dc hinhf anhr");
-    }
-  }
-
-  void upload(XFile file) {
-    // this.file = file;
-    emit(state.copyWith(avatar: file.path));
   }
 
   Future updateUser({

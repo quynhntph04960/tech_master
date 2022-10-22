@@ -6,7 +6,7 @@ import '../../../../base/navigator.dart';
 import '../../../../base/service/api_service.dart';
 import '../../../../main.dart';
 import '../../model/user_response.dart';
-import '../../news_feed/news_feed_page.dart';
+import '../news_feed/news_feed_page.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginState());

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../base/ui/gridview_widget.dart';
-import '../model/list_issues_response.dart';
+import '../../../../base/ui/gridview_widget.dart';
+import '../../model/list_issues_response.dart';
 
 class ItemNewsFeed extends StatelessWidget {
   final DataIssues data;

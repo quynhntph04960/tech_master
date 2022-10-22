@@ -2,9 +2,9 @@ import 'package:btvn_techmaster/base/utils/common_function.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../report_page.dart';
 import '../profile/profile_cubit.dart';
 import '../profile/profile_page.dart';
+import '../report/report_page.dart';
 
 class LeftMenuPage extends StatefulWidget {
   const LeftMenuPage({Key? key}) : super(key: key);

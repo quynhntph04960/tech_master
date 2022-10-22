@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../base/service/api_service.dart';
-import '../model/list_issues_response.dart';
+import '../../../../base/service/api_service.dart';
+import '../../model/list_issues_response.dart';
 
 class NewsFeedCubit extends Cubit<NewsFeedState> {
   int offset = 0;

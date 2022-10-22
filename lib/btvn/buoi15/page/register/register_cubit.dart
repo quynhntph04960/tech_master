@@ -31,8 +31,6 @@ class RegisterCubit extends Cubit<RegisterState> {
     UserResponse dataResponse = UserResponse.fromJson(json);
     if (dataResponse.code == 0) {
       Navigator.pop(context);
-    } else {
-      print("${dataResponse.message} - ${dataResponse.code}");
     }
   }
 }
