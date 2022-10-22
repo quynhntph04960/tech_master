@@ -1,11 +1,8 @@
-import 'dart:convert';
-
 import 'package:btvn_techmaster/base/ui/button_widget.dart';
+import 'package:btvn_techmaster/btvn/buoi15/page/register/register_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
-import '../../base/ui/MyTextField.dart';
-import 'model/user_response.dart';
+import '../../../../base/ui/MyTextField.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -20,8 +17,7 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController addressController = TextEditingController();
-
-  UserResponse? dataResponse;
+  final _cubit = RegisterCubit();
 
   @override
   void dispose() {
@@ -80,13 +76,25 @@ class _RegisterPageState extends State<RegisterPage> {
                 controller: addressController,
                 hintText: "Nhập địa chỉ",
                 textInputAction: TextInputAction.done,
-                onSubmitted: (p0) => registerUser(),
+                onSubmitted: (p0) => _cubit.registerUser(
+                    phone: phoneController.text,
+                    password: passwordController.text,
+                    name: nameController.text,
+                    address: addressController.text,
+                    email: emailController.text,
+                    context: context),
               ),
               const SizedBox(
                 height: 16,
               ),
               ButtonWidget(
-                onPressed: registerUser,
+                onPressed: () => _cubit.registerUser(
+                    phone: phoneController.text,
+                    password: passwordController.text,
+                    name: nameController.text,
+                    address: addressController.text,
+                    email: emailController.text,
+                    context: context),
                 text: "Đăng ký",
               )
             ],
@@ -94,48 +102,5 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
-  }
-
-  bool isValidate() {
-    if (phoneController.text.isEmpty ||
-        passwordController.text.isEmpty ||
-        nameController.text.isEmpty ||
-        emailController.text.isEmpty) return false;
-
-    return true;
-  }
-
-  Future registerUser() async {
-    if (phoneController.text.isEmpty ||
-        passwordController.text.isEmpty ||
-        nameController.text.isEmpty ||
-        emailController.text.isEmpty) {
-      print("Thiếu thông tin !");
-      return;
-    }
-    final uri = Uri.parse("http://api.quynhtao.com/api/accounts/register");
-    final param = {
-      "PhoneNumber": phoneController.text,
-      "Password": passwordController.text,
-      "Email": emailController.text,
-      "Address": addressController.text,
-      "Name": nameController.text,
-    };
-    final response = await http.post(
-      uri,
-      body: param,
-      encoding: utf8,
-    );
-    if (response.statusCode >= 200 && response.statusCode < 300) {
-      final json = jsonDecode(response.body);
-      dataResponse = UserResponse.fromJson(json);
-      if (dataResponse?.code == 0) {
-        Navigator.pop(context);
-      } else {
-        print("${dataResponse?.message} - ${dataResponse?.code}");
-      }
-      return;
-    }
-    throw Exception("Lỗi ${response.statusCode}");
   }
 }

@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'btvn/buoi15/login_page.dart';
+import 'btvn/buoi15/page/login/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

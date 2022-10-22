@@ -12,10 +12,12 @@ class FieldWidget extends StatefulWidget {
   final Widget? suffixIcon, prefixIcon;
   final TextInputAction? textInputAction;
   final FormFieldValidator<String>? validator;
+  final bool? enabled;
 
   const FieldWidget({
     Key? key,
     this.controller,
+    this.enabled,
     this.hintText,
     this.maxLines,
     this.maxLength,
@@ -40,7 +42,7 @@ class _FieldWidgetState extends State<FieldWidget> {
   Widget? suffixIcon, prefixIcon;
   TextInputAction? textInputAction;
   FormFieldValidator<String>? validator;
-
+  bool? enabled;
   bool isCheckPassword = true;
 
   @override
@@ -57,6 +59,7 @@ class _FieldWidgetState extends State<FieldWidget> {
     prefixIcon = widget.prefixIcon;
     textInputAction = widget.textInputAction;
     validator = widget.validator;
+    enabled = widget.enabled;
 
     if (suffixIcon == null) {
       switch (typeField) {
@@ -104,6 +107,7 @@ class _FieldWidgetState extends State<FieldWidget> {
         disabledBorder: border,
         focusedBorder: border,
       ),
+      enabled: enabled,
       textInputAction: textInputAction,
       maxLines: maxLines,
       minLines: minLines,
