@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../base/ui/button_widget.dart';
 import '../../../../base/ui/field_widget.dart';
+import '../../../../base/ui/loading_dialog.dart';
+import '../../../../main.dart';
 import 'login_cubit.dart';
 
 class LoginPage extends StatefulWidget {
@@ -22,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     // TODO: implement initState
     _cubit.checkLogin(context);
-
+    loadingDialog = LoadingDialog(keyMaterial.currentContext!);
     super.initState();
   }
 

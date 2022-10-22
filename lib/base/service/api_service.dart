@@ -19,6 +19,7 @@ class APIService {
     Map<String, dynamic>? body,
     XFile? file,
   }) async {
+    showLoading();
     final uri = Uri.parse("http://api.quynhtao.com/api/" + path);
     print('call api: $uri');
     print('params api: $body');
@@ -70,14 +71,28 @@ class APIService {
       if (json['code'] == 0) {
         // map, dictionary, key:value
         final data = json['data'];
+        hideLoading();
+
         return json;
       } else {
+        hideLoading();
+
         showErrorToast(json['message']);
         throw Exception(json['message']);
       }
     }
+    hideLoading();
+
     showErrorToast('Có lỗi xảy ra, http status code: ${response.statusCode}');
     throw Exception('Có lỗi xảy ra, http status code: ${response.statusCode}');
+  }
+
+  showLoading() {
+    loadingDialog?.show();
+  }
+
+  hideLoading() {
+    // loadingDialog?.hide();
   }
 }
 

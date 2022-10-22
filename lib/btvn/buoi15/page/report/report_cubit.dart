@@ -14,12 +14,15 @@ class ReportCubit extends Cubit<ReportState> {
       {required String title,
       required String content,
       required BuildContext context}) async {
+    List<String>? listNew = state.listPhoto?.map((e) => e).toList();
+    listNew?.removeAt(state.listPhoto?.length ?? 0);
     final param = {
       "Title": title,
       "Content": content,
-      "Photos": "",
+      "Photos": listNew?.join("|"),
     };
-    final json = await apiService.request(
+    print(param);
+    await apiService.request(
         path: "issues?limit=20&offset=0", method: Method.post, body: param);
     Navigator.pop(context);
   }

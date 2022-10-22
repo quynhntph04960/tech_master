@@ -37,19 +37,25 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
         // width: MediaQuery.of(context).size.width / 1.5,
         child: LeftMenuPage(),
       ),
-      body: BlocBuilder<NewsFeedCubit, NewsFeedState>(
-        bloc: _cubit,
-        builder: (context, state) {
-          return ListviewWidget<DataIssues>(
-            listData: state.listIssues ?? [],
-            itemBuilder: (data, index) {
-              if (index == ((state.listIssues?.length ?? 0) - 1)) {
-                _cubit.listIssues();
-              }
-              return ItemNewsFeed(data: data);
-            },
-          );
+      body: RefreshIndicator(
+        onRefresh: () async {
+          _cubit.offset = 0;
+          _cubit.listIssues();
         },
+        child: BlocBuilder<NewsFeedCubit, NewsFeedState>(
+          bloc: _cubit,
+          builder: (context, state) {
+            return ListviewWidget<DataIssues>(
+              listData: state.listIssues ?? [],
+              itemBuilder: (data, index) {
+                if (index == ((state.listIssues?.length ?? 0) - 1)) {
+                  _cubit.listIssues();
+                }
+                return ItemNewsFeed(data: data);
+              },
+            );
+          },
+        ),
       ),
     );
   }
