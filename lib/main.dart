@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'base/ui/loading_dialog.dart';
-import 'btvn/buoi15/page/login/login_page.dart';
+import 'kiem_tra/address/address_page.dart';
 
 LoadingDialog? loadingDialog;
 String? token = "";
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
-      home: const LoginPage(),
+      home: const AddressPage(),
     );
   }
 }
