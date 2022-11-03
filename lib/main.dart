@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'base/ui/loading_dialog.dart';
+import 'demo/buoi25/bai25.dart';
 
 LoadingDialog? loadingDialog;
 String? token = "";
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
-      home: const GPSpage(),
+      home: const Bai25Page(),
     );
   }
 }
