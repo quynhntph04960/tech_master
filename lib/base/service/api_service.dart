@@ -92,7 +92,7 @@ class APIService {
   }
 
   hideLoading() {
-    // loadingDialog?.hide();
+    loadingDialog?.hide();
   }
 }
 
