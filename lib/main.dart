@@ -1,9 +1,9 @@
 import 'package:btvn_techmaster/base/service/localtion_manager.dart';
+import 'package:btvn_techmaster/socket/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'base/ui/loading_dialog.dart';
-import 'demo/buoi25/bai25.dart';
 
 LoadingDialog? loadingDialog;
 String? token = "";
@@ -23,20 +23,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        backgroundColor: Colors.white,
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      darkTheme: ThemeData(
-        backgroundColor: Colors.black,
-        scaffoldBackgroundColor: Colors.black,
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.grey.withOpacity(0.4),
-        ),
-      ),
+      // theme: themeThemeData(
+      //   backgroundColor: Colors.white,
+      //   scaffoldBackgroundColor: Colors.white,
+      // ),
+      // darkTheme: ThemeData(
+      //   backgroundColor: Colors.black,
+      //   scaffoldBackgroundColor: Colors.black,
+      //   appBarTheme: AppBarTheme(
+      //     backgroundColor: Colors.grey.withOpacity(0.4),
+      //   ),
+      // ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
-      home: const Bai25Page(),
+      home: const LoginPage(),
     );
   }
 }
