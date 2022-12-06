@@ -36,10 +36,13 @@ class MyApp extends StatelessWidget {
       // ),
       // themeMode: ThemeMode.dark,
       navigatorKey: keyMaterial,
+      navigatorObservers: [routeObserver],
       home: const LoginPage(),
     );
   }
 }
+
+final routeObserver = RouteObserver<ModalRoute<void>>();
 
 class GPSpage extends StatefulWidget {
   const GPSpage({Key? key}) : super(key: key);
